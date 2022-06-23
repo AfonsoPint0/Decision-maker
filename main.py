@@ -4,17 +4,11 @@ option = []
 
 # Add options
 def add():
-    var = "nada"
-    i = 0
-
-    while i < 10:
-        var = input("""
-        --------------------                                                             
-        Insert a value or type \quit
-        --------------------
-        """)
-        option[2] = var
-        ++i
+    while True:
+        var = input(r"Insert one word or type '/quit' to exit")
+        if var == r"/quit":
+            intro()
+        option.append(var)
             
     
 
@@ -34,7 +28,6 @@ def intro():
 
     if var == "1" :
         add()
-        print(option)
 
     elif var == "2" : 
         print("nada")
@@ -52,8 +45,4 @@ def intro():
 
     
 
-<<<<<<< HEAD
 add()
-=======
-add()33
->>>>>>> d01c4ee5a48547612f25067083f469522ca59706
