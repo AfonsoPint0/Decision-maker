@@ -1,48 +1,92 @@
 import os
+import random
 
 option = []
 
 # Add options
 def add():
     while True:
-        var = input(r"Insert one word or type '/quit' to exit")
-        if var == r"/quit":
-            intro()
-        option.append(var)
-            
-    
+        var = input(r"Insert one option or type '/quit' to exit"+"\n\t")
+        if var != r"/quit":
+            option.append(var)
+        else:    
+            menu()
+
+# Check options
+def check():
+    if(len(option) >= 1):
+        for i in range(len(option)):
+            print("Option " + str(i) + " : " + option[i] + "\n")
+        os.system('pause')
+    else:
+        print("\tThe list of options is empty\n")
+        os.system('pause')
+    menu()
+
+# Chose random option
+def randomize():
+    if(len(option) >= 1):
+        random_option = random.choice(option)
+        print("Choice : " + random_option + "\n")
+        os.system('pause')
+    else:
+        print("\tThe list of options is empty\n")
+        os.system('pause')
+    menu()
+
+# Clear options
+def clear():
+    option.clear()
+    print("Options have been cleared\n")
+    os.system('pause')
+    menu()
+
+# Close app
+def close():
+    print("\n\tBye\n")
+    exit()
+
+# Invalid choice
+def error():
+    print("\n\tInvalid choice\n\t")    
+    os.system('pause')
+    menu()
 
 # Main menu
-def intro():
+def menu():
     os.system('cls')
     print("""
-    MENU
+    Decision maker
+    --------------------                                                             
+            MENU
     --------------------                                                             
     1   Add option
-    2   Clear options
-    3   Randomize
+    2   Check options
+    3   Get random option
+    4   Clear options
     0   Exit
     --------------------
     """)
-    var= input("\tChoice : ")
+    choice = input("\tChoice : ")
 
-    if var == "1" :
+    if choice == "1" :
         add()
 
-    elif var == "2" : 
-        print("nada")
+    elif choice == "2" :
+        check()
+
+    elif choice == "3" : 
+        randomize()
+
+    elif choice == "4" : 
+        clear()
 
     #Exit
-    elif var == "0" or var == "exit" or var == "quit" :
-        exit("\tBye\n")
+    elif choice == "0" or choice == "exit" or choice == "quit" :
+        close()
     
     #Invalid choice 
     else:
-        print("\n\tInvalid choice\n")
+        error()
         
-        os.system('pause')    
-        intro()
-
-    
-
-add()
+menu()
